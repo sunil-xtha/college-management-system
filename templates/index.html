@@ -1,0 +1,84 @@
+{% extends 'master.html' %}
+{% block 'title' %} Home  {% endblock %}
+{% block 'content' %}
+<html>
+<head>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  background-color:#032523;
+  padding:30px;
+  font-family: arial;
+
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+ul{
+list-style-type: none;
+display:inline-flex;
+
+}
+.btn-sm{
+width:200px;
+margin:auto;
+}
+ul li{
+
+color:#A30808;
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+<div style="text-align:center"><h1>Student Profile</h1></div>
+{% for x in sts %}
+<ul>
+  <li>
+
+<div class="card">
+
+  <img src="/media/{{ x.profile.url }}/" style="width:auto; height: 250px;">
+  <h4>Fullname: {{x.fullname}}</h4>
+  <p >Semester: {{x.semester}}</p>
+  <h5>Faculty: {{x.faculty}}</h5>
+  <p>Address: {{x.address}}</p>
+  <p>Contact_no: {{x.contact_no}}</p>
+
+  <a href="{% url 'update_student' x.id %}" class="btn btn-sm btn-info">View</a><br/>
+  <a href="{% url 'delete_student' x.id %}" class="btn btn-sm btn-danger">Delete</a>
+
+</div>
+
+  </li>
+</ul>
+{% endfor %}
+</body>
+</html>
+
+
+{% endblock %}

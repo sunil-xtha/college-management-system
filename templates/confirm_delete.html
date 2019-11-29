@@ -1,0 +1,18 @@
+
+{% extends 'master.html' %}
+{% block 'title' %} Home  {% endblock %}
+{% block 'content' %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-3" >
+               {% include 'partials/message.html' %}
+            <form method="post" action="{% url 'delete_student' student.id  %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3>Are you sure to remove</h3> <h2> {{ student.fullname }} ?</h2>
+                <button type="submit" class="btn btn-danger">Confirm</button>
+            </form>
+</div>
+    </div>
+</div>
+{% endblock %}

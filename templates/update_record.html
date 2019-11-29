@@ -1,0 +1,19 @@
+
+{% extends 'master.html' %}
+{% block 'title' %} Home  {% endblock %}
+{% block 'content' %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-3" >
+               {% include 'partials/message.html' %}
+            <form method="post" enctype="multipart/form-data">
+                {{form.as_p}}
+                <hr>
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+</div>
+    </div>
+</div>
+{% endblock %}
